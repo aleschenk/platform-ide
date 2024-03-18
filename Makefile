@@ -1,4 +1,4 @@
-IMAGE_NAME = jupyterlab-ale
+IMAGE_NAME = platform-ide
 CONTAINER_NAME = $(IMAGE_NAME)
 
 # Build configuration
@@ -62,6 +62,10 @@ restart: ## restart container
 .PHONY: logs
 logs: ## show logs 
 	docker logs $(CONTAINER_NAME)
+
+.PHONY: flogs
+flogs: ## show live logs
+	docker logs -f $(CONTAINER_NAME)
 
 .PHONY: shell
 shell: ## execute a shell
