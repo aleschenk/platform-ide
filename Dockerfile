@@ -7,7 +7,10 @@ ARG JUPYTER_KERNEL_PATH=/home/jovyan/.local/share/jupyter/kernels
 
 USER root
 
-RUN apt-get update && apt-get install --yes --no-install-recommends curl default-jdk build-essential golang-go coq coqide
+RUN apt-get update && apt-get install --yes --no-install-recommends curl default-jdk build-essential golang-go coq coqide python3-dev libcairo2-dev libpango1.0-dev ffmpeg
+
+# Manim
+RUN apt install build-essential python3-dev libcairo2-dev libpango1.0-dev ffmpeg
 
 # ----------------------------------------------
 # Install Almond kernel (Scala)
@@ -52,7 +55,20 @@ RUN conda install -y -c jetbrains kotlin-jupyter-kernel
 # ---------------------------------------------
 # Install Polyglot
 # ---------------------------------------------
-RUN pip install jupyterlab_sos
+RUN pip install jupyterlab_sos manim ollama langchain langchain-ollama pandas langchain-community
+
+# ----------------------------------------------
+# Install Haskell
+# ----------------------------------------------
+# RUN apt-get install -y git libtinfo-dev libzmq3-dev libcairo2-dev libpango1.0-dev libmagic-dev libblas-dev liblapack-dev
+
+# RUN curl -sSL https://get.haskellstack.org/ | sh \
+#     && git clone https://github.com/gibiansky/IHaskell \
+#     && cd IHaskell \
+#     && pip3 install -r requirements.txt \
+#     && stack install --fast \
+#     && ihaskell install --stack
+
 
 EXPOSE 8888
 

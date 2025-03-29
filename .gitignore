@@ -20,3 +20,8 @@ __pycache__/
 # JupyterLab configuration files
 .jupyterlab-workspace
 .jupyterlab-settings
+
+.DS_Store
+.idea/
+
+
